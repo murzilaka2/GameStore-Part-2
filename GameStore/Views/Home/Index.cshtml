@@ -3,15 +3,15 @@
 }
 @model IQueryable<Product>
 
-<h3 class="p-2 bg-bg-primary text-white text-center">Товары</h3>
+<h3 class="p-2 bg-primary text-white text-center">Товары</h3>
 <div class="container">
     @if (ViewBag.UpdateAll != true)
     {
         <div class="row">
-            <div class="col font-weight-bold">Название</div>
-            <div class="col font-weight-bold">Категория</div>
-            <div class="col font-weight-bold">Закупочная цена</div>
-            <div class="col font-weight-bold">Розничная цена</div>
+            <div class="col fw-bold">Название</div>
+            <div class="col fw-bold">Категория</div>
+            <div class="col fw-bold">Закупочная цена</div>
+            <div class="col fw-bold">Розничная цена</div>
             <div class="col"></div>
         </div>
         <form asp-action="AddProduct" asp-controller="Home" method="post">
@@ -52,16 +52,16 @@
                     <div class="col">
                         <form asp-action="DeleteProduct" method="post">
                             <input type="hidden" name="Id" value="@product.Id">
+                            <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-outline-primary">Редактировать</a>
                             <button type="submit" class="btn btn-outline-danger">Удалить</button>
-                        </form>
-                        <a asp-action="UpdateProduct" asp-route-id="@product.Id" class="btn btn-outline-primary">Изменить</a>
+                        </form>                       
                     </div>
                 </div>
             }
 
         }
         <div class="text-center">
-            <a asp-action="UpdateAll" class="btn btn-primary">Изменить все</a>
+            <a asp-action="UpdateAll" class="btn btn-primary">Редактировать все</a>
         </div>
     }
     else
